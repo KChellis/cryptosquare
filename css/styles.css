@@ -36,6 +36,8 @@ button {
 p {
   font-size: 20px;
   color: white;
+  background-color: #075876;
+  padding: 2px;
 }
 label{
   font-size: 20px;
