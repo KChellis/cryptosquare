@@ -14,11 +14,26 @@
         <h1>Cryptosquare Encoder</h1>
         <h2>Send secret messages to your friends!</h2>
       </div>
-      <form id = "formOne">
-        <label for="sentence">Enter text to encode!</label>
-        <input id = "sentence" type="text" name="sentence" class = "form-control">
-        <button type="submit" name="button"class = "btn-info">Submit</button>
-      </form>
+      <div class="option">
+        <p>Would you like to encode or decode text?</p>
+        <button id="encode" type="button" class = "btn-info">Encode</button>
+        <button id="decode" type="button" class = "btn-info">Decode</button>
+      </div>
+      <div class="encode">
+        <form id = "formOne">
+          <label for="sentence">Enter text to encode!</label>
+          <input id = "sentence" type="text" name="sentence" class = "form-control">
+          <button type="submit" name="button"class = "btn-info">Submit</button>
+        </form>
+      </div>
+      <div class="decode">
+        <form id = "formTwo">
+          <label for="sentence2">Enter text to decode!</label>
+          <input id = "sentence2" type="text" name="sentence2" class = "form-control">
+          <button type="submit" name="button"class = "btn-info">Submit</button>
+        </form>
+      </div>
+
       <div class="output">
         <p id = "output"></p>
       </div>

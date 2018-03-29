@@ -43,3 +43,6 @@ label{
   background-color: #075876;
   padding: 2px;
 }
+.encode, .decode {
+  display: none;
+}

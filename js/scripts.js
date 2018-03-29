@@ -7,21 +7,20 @@ function onlyLetters(string){
   }
   return letters;
 }
-function columns(string){
-  var length = string.length;
+function columns(number){
   var column;
-  for (var i = 0; i < length; i++) {
-    if(length < i*i){
+  for (var i = 0; i < number; i++) {
+    if(number < i*i){
       column = i;
-      i = length;
+      i = number;
     }
   }
   return column;
 }
-function rows(string, number){
+function rows(number1, number2){
   var rows = 0;
-  rows = Math.floor(string.length / number);
-  if(string.length % number !== 0){
+  rows = Math.floor(number1 / number2);
+  if(number1 % number2 !== 0){
     rows += 1;
   }
   return rows;
@@ -64,26 +63,71 @@ function setCode(array, num1, num2, num3) {
   }
   return codeArray;
 }
-function coded(string){
+
+function unravelCode(string, length, column, row) {
+  var rows = [];
+  var leftover = (length%column);
+  for (var i = 0; i < row; i++) {
+    rows[i]= "";
+  }
+  console.log(rows);
+  var index = 0
+  for (var i = 0; i < column; i++) {
+    for (var j = 0; j < row; j++) {
+      if(j===(row-1) && i>=leftover){
+
+      }else {
+        rows[j] += string[index]
+        index+=1
+        console.log(rows);
+      }
+    }
+  }
+  return rows;
+}
+function encoded(string){
   var lowerCase = string.toLowerCase();
   var letters = onlyLetters(lowerCase);
   var length = letters.length;
-  var column = columns(letters);
-  var row = rows(letters, column);
+  var column = columns(length);
+  var row = rows(length, column);
   var rowArray = square(letters, column, row);
   var codedArray= setCode(rowArray, column, row, length);
   var result = codedArray.join(" ");
   return result;
 }
-
+function decoded(string) {
+  var code = onlyLetters(string);
+  var length = code.length;
+  var column = columns(length);
+  var row = rows(length, column);
+  var array = unravelCode(code, length, column, row);
+  var result = array.join("");
+  return result;
+}
 
 
 $(document).ready(function(){
   $("#formOne").submit(function(event){
     event.preventDefault();
     var sentence = $("#sentence").val();
-    var result = coded(sentence);
+    var result = encoded(sentence);
     $("#output").text(result);
     $(".output").show();
+  });
+  $("#formTwo").submit(function(event){
+    event.preventDefault();
+    var sentence = $("#sentence2").val();
+    var result = decoded(sentence);
+    $("#output").text(result);
+    $(".output").show();
+  });
+  $("#encode").click(function() {
+    $(".encode").show();
+    $(".decode").hide();
+  });
+  $("#decode").click(function() {
+    $(".decode").show();
+    $(".encode").hide();
   });
 });
