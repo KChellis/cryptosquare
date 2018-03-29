@@ -84,5 +84,6 @@ $(document).ready(function(){
     var sentence = $("#sentence").val();
     var result = coded(sentence);
     $("#output").text(result);
+    $(".output").show();
   });
 });
