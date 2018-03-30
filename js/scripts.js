@@ -7,42 +7,42 @@ function onlyLetters(string){
   }
   return letters;
 }
-function columns(number){
+function columns(length){
   var column;
-  for (var i = 0; i < number; i++) {
-    if(number < i*i){
+  for (var i = 0; i < length; i++) {
+    if(length < i*i){
       column = i;
-      i = number;
+      i = length;
     }
   }
   return column;
 }
-function rows(number1, number2){
+function rows(length, column){
   var rows = 0;
-  rows = Math.floor(number1 / number2);
-  if(number1 % number2 !== 0){
+  rows = Math.floor(length / column);
+  if(length % column !== 0){
     rows += 1;
   }
   return rows;
 }
-function square(string, num1, num2) {
+function square(string, column, row) {
   var rows = [];
-  for (var i = 0; i < num2; i++) {
+  for (var i = 0; i < row; i++) {
     rows[i]= "";
   }
-  var j=0
+  var index=0
   for (var i = 0; i < string.length; i++) {
-    rows[j] += string[i];
-    if ((i+1)%num1 === 0) {
-      j +=1;
+    rows[index] += string[i];
+    if ((i+1)%column === 0) {
+      index +=1;
     }
   }
   return rows;
 }
-function setCode(array, num1, num2, num3) {
+function setCode(array, column, row, length) {
   var codeArray= [];
-  var elements = Math.floor(num3/5);
-  if (num3%5 !== 0) {
+  var elements = Math.floor(length/5);
+  if (length%5 !== 0) {
     elements +=1;
   }
 
@@ -50,8 +50,8 @@ function setCode(array, num1, num2, num3) {
     codeArray[i]= "";
   }
   var index = 0;
-  for (var i = 0; i < num1; i++) {
-    for (var j = 0; j < num2; j++) {
+  for (var i = 0; i < column; i++) {
+    for (var j = 0; j < row; j++) {
       var word = array[j];
       if (word[i]) {
         codeArray[index] += word[i];
